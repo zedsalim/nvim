@@ -72,3 +72,9 @@ key.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if neces
 -- key.set("n", "<A-v>", ":ToggleTerm direction=vertical size=80<CR>")
 -- key.set("i", "<A-h>", ":ToggleTerm direction=horizontal size=20<CR>")
 -- key.set("i", "<A-v>", ":ToggleTerm direction=vertical size=80<C>")
+
+-- Window Navigation
+key.set("n", "<C-Up>", ":TmuxNavigateUp<CR>")
+key.set("n", "<C-Down>", ":TmuxNavigateDown<CR>")
+key.set("n", "<C-Left>", ":TmuxNavigateLeft<CR>")
+key.set("n", "<C-Right>", ":TmuxNavigateRight<CR>")
