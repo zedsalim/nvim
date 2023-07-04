@@ -38,6 +38,7 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("rebelot/kanagawa.nvim")
 	use("ful1e5/onedark.nvim")
+	use("Mofiqul/vscode.nvim")
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 
