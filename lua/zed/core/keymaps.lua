@@ -55,7 +55,7 @@ key.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>") -- list open buffers in
 key.set("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>") -- find in current buffer
 key.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>") -- list available help tags
 
--- telescope git commands (not on youtube nvim video)
+-- telescope git commands
 key.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>") -- list all git commits (use <CR> to checkout) ["gc" for git commits]
 key.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>") -- list current changes per file with diff preview ["gs" for git status]
 
