@@ -34,10 +34,10 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	-- colorscheme
-	use("bluz71/vim-nightfly-guicolors")
-	use("folke/tokyonight.nvim")
-	use("rebelot/kanagawa.nvim")
-	use("ful1e5/onedark.nvim")
+	-- use("bluz71/vim-nightfly-guicolors")
+	-- use("folke/tokyonight.nvim")
+	-- use("rebelot/kanagawa.nvim")
+	-- use("ful1e5/onedark.nvim")
 	use("Mofiqul/vscode.nvim")
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
@@ -54,7 +54,7 @@ return packer.startup(function(use)
 	use("nvim-tree/nvim-web-devicons")
 
 	-- statusline
-	use("nvim-lualine/lualine.nvim")
+	-- use("nvim-lualine/lualine.nvim")
 
 	-- toggleterm
 	use("akinsho/toggleterm.nvim")
