@@ -8,30 +8,22 @@ local key = vim.keymap
 key.set("n", "<Esc>", ":nohl<CR>") -- clear highlights
 key.set("n", "<C-s>", "<cmd> w <CR>") -- save file
 key.set("i", "<C-s>", "<cmd> w <CR>") -- save file
-key.set("n", "<C-sq>", "<cmd> wq <CR>") -- save file and quit
 key.set("n", "<C-q>", "<cmd> q! <CR>") -- quit without saving
 key.set("n", "x", '"_x') -- delete single character without copying into register
-key.set("n", "<leader>wv", "<C-w>v") -- split window vertically
-key.set("n", "<leader>wh", "<C-w>s") -- split window horizontally
+key.set("n", "<leader>v", "<C-w>v") -- split window vertically
+key.set("n", "<leader>h", "<C-w>s") -- split window horizontally
 key.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & height
-key.set("n", "<leader>wq", ":close<CR>") -- close current split window
+key.set("n", "<leader>q", ":close<CR>") -- close current split window
 -- switch between windows
 key.set("n", "<C-Left>", "<C-w>h")
 key.set("n", "<C-Right>", "<C-w>h")
 key.set("n", "<C-Down>", "<C-w>j")
 key.set("n", "<C-Up>", "<C-w>k")
-
-key.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
-key.set("n", "<leader>tq", ":tabclose<CR>") -- close current tab
+key.set("n", "<C-t>", ":tabnew<CR>") -- open new tab
 key.set("n", "<tab>", ":tabn<CR>") --  go to next tab
 key.set("n", "<S-tab>", ":tabp<CR>") --  go to previous tab
-key.set("i", "<C-b>", "<ESC>^i") -- go to beginning of line
+key.set("i", "<C-a>", "<ESC>^i") -- go to beginning of line
 key.set("i", "<C-e>", "<End>") -- go to end of line
--- navigate inside insert mode
-key.set("i", "<C-h>", "<Left>")
-key.set("i", "<C-l>", "<Right>")
-key.set("i", "<C-j>", "<Down>")
-key.set("i", "<C-k>", "<Up>")
 key.set("n", "<Left>", "<Left>")
 key.set("n", "<Right>", "<Right>")
 key.set("n", "<Down>", "<Down>")
@@ -41,10 +33,10 @@ key.set("n", "<Up>", "<Up>")
 ----------------------
 
 -- vim-maximizer
-key.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
+key.set("n", "<leader>m", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- nvim-tree
-key.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
+key.set("n", "<leader>n", ":NvimTreeToggle<CR>") -- toggle file explorer
 
 -- telescope
 key.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>") -- find files inside current working directory
@@ -61,9 +53,6 @@ key.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>") -- list current chan
 
 -- restart lsp server
 key.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
-
--- key.set("n", "<leader>/", "gcc") -- comment toggle current line
--- key.set("v", "<leader>/", "gc") -- comment toggle linewise (visual)"
 
 -- toggleterm
 -- key.set("n", "<A-return>", ":ToggleTerm direction=float size=20<CR>")
