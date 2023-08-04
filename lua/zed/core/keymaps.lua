@@ -19,7 +19,7 @@ key.set("n", "<C-Left>", "<C-w>h")
 key.set("n", "<C-Right>", "<C-w>h")
 key.set("n", "<C-Down>", "<C-w>j")
 key.set("n", "<C-Up>", "<C-w>k")
-key.set("n", "<C-t>", ":tabnew<CR>") -- open new tab
+key.set("n", "<space>t", ":tabnew<CR>") -- open new tab
 key.set("n", "<tab>", ":tabn<CR>") --  go to next tab
 key.set("n", "<S-tab>", ":tabp<CR>") --  go to previous tab
 key.set("i", "<C-a>", "<ESC>^i") -- go to beginning of line
