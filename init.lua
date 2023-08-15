@@ -15,3 +15,8 @@ require("zed.plugins.autopairs")
 require("zed.plugins.treesitter")
 require("zed.plugins.gitsigns")
 require("zed.plugins.toggleterm")
+
+vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
+vim.cmd([[hi NonText guibg=NONE ctermbg=NONE]])
+vim.cmd([[hi LineNr guibg=NONE ctermbg=NONE]])
+vim.o.winblend = 40
