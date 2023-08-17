@@ -19,4 +19,6 @@ require("zed.plugins.toggleterm")
 vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
 vim.cmd([[hi NonText guibg=NONE ctermbg=NONE]])
 vim.cmd([[hi LineNr guibg=NONE ctermbg=NONE]])
-vim.o.winblend = 40
+vim.opt.winblend = 40
+vim.opt.laststatus = 0
+vim.opt.showtabline = 0
