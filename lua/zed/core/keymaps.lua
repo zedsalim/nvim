@@ -67,3 +67,19 @@ key.set("n", "<C-Up>", ":TmuxNavigateUp<CR>")
 key.set("n", "<C-Down>", ":TmuxNavigateDown<CR>")
 key.set("n", "<C-Left>", ":TmuxNavigateLeft<CR>")
 key.set("n", "<C-Right>", ":TmuxNavigateRight<CR>")
+
+-- Terminal buffer --
+vim.api.nvim_set_keymap("n", "<C-Return>", ":term<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-Return>", "<Esc>:term<CR>", { noremap = true, silent = true })
+-- opens :term in insert mode directly
+vim.cmd([[
+  augroup TerminalAutoInsert
+    autocmd!
+    autocmd TermOpen * startinsert
+  augroup END
+]])
+-- closes the terminal buffer
+vim.cmd([[
+  autocmd! TermOpen * tnoremap <buffer> <Esc> <C-\><C-n>:bd!<CR>
+]])
+-- End of Terminal buffer --
