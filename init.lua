@@ -22,3 +22,11 @@ vim.cmd([[hi LineNr guibg=NONE ctermbg=NONE]])
 vim.opt.winblend = 40
 vim.opt.laststatus = 0
 vim.opt.showtabline = 0
+
+-- Automatically set formatoptions when opening files
+vim.cmd([[
+  augroup AutoFormatOptions
+    autocmd!
+    autocmd FileType * setlocal formatoptions-=cro
+  augroup END
+]])
