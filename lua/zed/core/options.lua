@@ -54,3 +54,11 @@ opt.updatetime = 300 -- faster completion (4000ms default)
 opt.numberwidth = 4 -- set number column width to 2 {default 4}
 opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 opt.scrolloff = 16 -- minimal number of screen lines to keep above and below the cursor
+
+-- Netrw
+-- Disable netrw banner
+vim.g.netrw_banner = 0
+-- Set netrw liststyle to 3
+vim.g.netrw_liststyle = 3
+-- Change the copy command. Mostly to enable recursive copy of directories.
+vim.g.netrw_localcopydircmd = "cp -r"
