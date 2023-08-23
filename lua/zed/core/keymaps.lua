@@ -41,6 +41,8 @@ key.set("n", "<leader>m", ":MaximizerToggle<CR>") -- toggle split window maximiz
 -- netrw
 key.set("n", "<leader>n", ":lcd %:p:h<CR>:Lexplore<CR>:vertical resize 30<CR>")
 key.set("i", "<leader>n", "<ESC>:lcd %:p:h<CR>:Lexplore<CR>:vertical resize 30<CR>")
+key.set("n", "<leader>b", ":cd<CR>:Lexplore<CR>:vertical resize 30<CR>")
+key.set("i", "<leader>b", "<ESC>:cd<CR>:Lexplore<CR>:vertical resize 30<CR>")
 
 -- telescope
 key.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>") -- find files inside current working directory
