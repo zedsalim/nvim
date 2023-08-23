@@ -36,7 +36,10 @@ key.set("n", "<Up>", "<Up>")
 key.set("n", "<leader>m", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- nvim-tree
-key.set("n", "<leader>n", ":NvimTreeToggle<CR>") -- toggle file explorer
+-- key.set("n", "<leader>n", ":NvimTreeToggle<CR>") -- toggle file explorer
+
+-- netrw
+key.set("n", "<leader>n", ":let g:netrw_winsize = 20<CR>:Lex<CR>", { noremap = true, silent = true })
 
 -- telescope
 key.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>") -- find files inside current working directory

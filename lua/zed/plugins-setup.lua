@@ -34,10 +34,6 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
 	-- colorscheme
-	-- use("bluz71/vim-nightfly-guicolors")
-	-- use("folke/tokyonight.nvim")
-	-- use("rebelot/kanagawa.nvim")
-	-- use("ful1e5/onedark.nvim")
 	use("Mofiqul/vscode.nvim")
 
 	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
@@ -48,7 +44,7 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim")
 
 	-- file explorer
-	use("nvim-tree/nvim-tree.lua")
+	-- use("nvim-tree/nvim-tree.lua")
 
 	-- vs-code like icons
 	use("nvim-tree/nvim-web-devicons")
