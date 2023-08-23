@@ -21,7 +21,28 @@ vim.cmd([[hi NonText guibg=NONE ctermbg=NONE]])
 vim.cmd([[hi LineNr guibg=NONE ctermbg=NONE]])
 vim.opt.winblend = 40
 vim.opt.laststatus = 0
-vim.opt.showtabline = 0
+
+-- Show all tab titles side by side with different formatting for the current tab
+vim.o.showtabline = 2
+vim.o.tabline = [[%!v:lua.MyTabline()]]
+function MyTabline()
+	local s = ""
+	local current_tab = vim.fn.tabpagenr()
+	for i = 1, vim.fn.tabpagenr("$") do
+		local buflist = vim.fn.tabpagebuflist(i)
+		local winnr = vim.fn.tabpagewinnr(i)
+		local winbufnr = buflist[winnr]
+		local bufname = vim.fn.bufname(winbufnr)
+		local tab_title = (bufname == "" and "[No Name]" or vim.fn.fnamemodify(bufname, ":t"))
+
+		if i == current_tab then
+			s = s .. "%" .. i .. "T" .. "# " .. tab_title .. " "
+		else
+			s = s .. "%" .. i .. "T" .. tab_title .. " "
+		end
+	end
+	return s
+end
 
 -- Automatically set formatoptions when opening files
 vim.cmd([[
