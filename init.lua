@@ -51,3 +51,7 @@ vim.cmd([[
     autocmd FileType * setlocal formatoptions-=cro
   augroup END
 ]])
+
+vim.cmd([[
+  command! -nargs=0 X :! /bin/bash "/mnt/FILES/My_Stuff/TASM/script.sh" %:r
+]])

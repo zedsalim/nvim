@@ -13,6 +13,9 @@ opt.autoindent = true -- copy indent from current line when starting new one
 opt.wrap = true
 opt.linebreak = true -- companion to wrap, don't split words
 
+opt.ruler = true -- show the line and column number of the cursor position
+opt.laststatus = 2 -- always show status line, including line and column count
+opt.textwidth = 220 -- set the maximum width of text lines to 120 characters
 -- search settings
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
