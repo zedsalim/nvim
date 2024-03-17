@@ -44,10 +44,6 @@ for type, icon in pairs(signs) do
 end
 
 -- configure c server
--- lspconfig["clangd"].setup({
---   capabilities = capabilities,
---   on_attach = on_attach,
--- })
 lspconfig["clangd"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -87,10 +83,21 @@ lspconfig["cssls"].setup({
 	on_attach = on_attach,
 })
 
--- configure html server
+-- -- configure ts server
+-- lspconfig["tsserver"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+
+-- configure ts server without suggestions
 lspconfig["tsserver"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	init_options = {
+		preferences = {
+			disableSuggestions = true,
+		},
+	},
 })
 
 -- configure lua server (with special settings)

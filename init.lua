@@ -36,7 +36,7 @@ function MyTabline()
 		local tab_title = (bufname == "" and "[No Name]" or vim.fn.fnamemodify(bufname, ":t"))
 
 		if i == current_tab then
-			s = s .. "%" .. i .. "T" .. "# " .. tab_title .. " "
+			s = s .. "%" .. i .. "T" .. "✅" .. tab_title .. " "
 		else
 			s = s .. "%" .. i .. "T" .. tab_title .. " "
 		end
