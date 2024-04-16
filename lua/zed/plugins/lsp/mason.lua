@@ -30,6 +30,8 @@ mason_lspconfig.setup({
 		"lua_ls",
 		"marksman",
 		"pyre",
+		-- "php-cs-fixer", -- PHP formatter
+		-- "phpcs", -- PHP linter
 	},
 	-- auto-install configured servers (with lspconfig)
 	automatic_installation = true, -- not the same as ensure_installed
@@ -44,6 +46,8 @@ mason_null_ls.setup({
 		"clang-format",
 		"beautysh",
 		"mdformat",
+		-- "php-cs-fixer", -- PHP formatter
+		-- "phpcs", -- PHP linter
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,
