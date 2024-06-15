@@ -1,77 +1,81 @@
 vim.g.mapleader = " "
 
-local key = vim.keymap
+local keymap = vim.keymap -- for conciseness
 
----------------------
--- General Keymaps
----------------------
-key.set("n", "<Esc>", ":nohl<CR>") -- clear highlights
-key.set("n", "<C-s>", "<cmd> w <CR>") -- save file
-key.set("i", "<C-s>", "<cmd> w <CR>") -- save file
-key.set("n", "<C-q>", "<cmd> q! <CR>") -- quit without saving
-key.set("n", "x", '"_x') -- delete single character without copying into register
-key.set("n", "<leader>v", "<C-w>v") -- split window vertically
-key.set("n", "<leader>h", "<C-w>s") -- split window horizontally
-key.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & height
-key.set("n", "<leader>q", ":close<CR>") -- close current split window
--- switch between windows
-key.set("n", "<C-Left>", "<C-w>h")
-key.set("n", "<C-Right>", "<C-w>h")
-key.set("n", "<C-Down>", "<C-w>j")
-key.set("n", "<C-Up>", "<C-w>k")
-key.set("n", "<space>t", ":tabnew<CR>") -- open new tab
-key.set("n", "<tab>", ":tabn<CR>") --  go to next tab
-key.set("n", "<S-tab>", ":tabp<CR>") --  go to previous tab
-key.set("i", "<C-a>", "<ESC>^i") -- go to beginning of line
-key.set("i", "<C-e>", "<End>") -- go to end of line
-key.set("n", "<Left>", "<Left>")
-key.set("n", "<Right>", "<Right>")
-key.set("n", "<Down>", "<Down>")
-key.set("n", "<Up>", "<Up>")
-----------------------
--- Plugin Keybinds
-----------------------
+-- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
--- vim-maximizer
-key.set("n", "<leader>m", ":MaximizerToggle<CR>") -- toggle split window maximization
+keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
+-- keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<C-q>", "<cmd> q! <CR>", { desc = "Quit without saving" }) -- quit without saving
+keymap.set("n", "x", '"_x', { desc = "delete single character without copying into register" }) -- delete single character without copying into register
 
--- nvim-tree
--- key.set("n", "<leader>n", ":NvimTreeToggle<CR>") -- toggle file explorer
+-- increment/decrement numbers
+keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
+keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
--- netrw
-key.set("n", "<leader>n", ":lcd %:p:h<CR>:Lexplore<CR>:vertical resize 30<CR>")
-key.set("n", "<leader>b", ":cd<CR>:Lexplore<CR>:vertical resize 30<CR>")
+-- window management
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
--- telescope
-key.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>") -- find files inside current working directory
-key.set("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>") -- find all files inside current working directory
-key.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>") -- find string in current working directory as you type
-key.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>") -- find string under cursor in current working directory
-key.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>") -- list open buffers in current neovim instance
-key.set("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>") -- find in current buffer
-key.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>") -- list available help tags
+keymap.set("n", "<C-Left>", "<C-w>h")
+keymap.set("n", "<C-Right>", "<C-w>h")
+keymap.set("n", "<C-Down>", "<C-w>j")
+keymap.set("n", "<C-Up>", "<C-w>k")
 
--- telescope git commands
-key.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>") -- list all git commits (use <CR> to checkout) ["gc" for git commits]
-key.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>") -- list current changes per file with diff preview ["gs" for git status]
+keymap.set("n", "<C-Up>", ":TmuxNavigateUp<CR>")
+keymap.set("n", "<C-Down>", ":TmuxNavigateDown<CR>")
+keymap.set("n", "<C-Left>", ":TmuxNavigateLeft<CR>")
+keymap.set("n", "<C-Right>", ":TmuxNavigateRight<CR>")
 
--- restart lsp server
-key.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
+keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
+-- keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
+-- keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+keymap.set("n", "<tab>", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
+keymap.set("n", "<S-tab>", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- toggleterm
--- key.set("n", "<A-return>", ":ToggleTerm direction=float size=20<CR>")
--- key.set("i", "<A-return>", ":ToggleTerm direction=float size=20<CR>")
--- key.set("n", "<A-h>", ":ToggleTerm direction=horizontal size=20<CR>")
--- key.set("n", "<A-v>", ":ToggleTerm direction=vertical size=80<CR>")
--- key.set("i", "<A-h>", ":ToggleTerm direction=horizontal size=20<CR>")
--- key.set("i", "<A-v>", ":ToggleTerm direction=vertical size=80<C>")
+keymap.set("n", "<A-return>", ":ToggleTerm direction=float size=20<CR>")
+keymap.set("i", "<A-return>", ":ToggleTerm direction=float size=20<CR>")
+-- keymap.set("n", "<A-h>", ":ToggleTerm direction=horizontal size=20<CR>")
+-- keymap.set("n", "<A-v>", ":ToggleTerm direction=vertical size=80<CR>")
+-- keymap.set("i", "<A-h>", ":ToggleTerm direction=horizontal size=20<CR>")
+-- keymap.set("i", "<A-v>", ":ToggleTerm direction=vertical size=80<C>")
 
--- Window Navigation
-key.set("n", "<C-Up>", ":TmuxNavigateUp<CR>")
-key.set("n", "<C-Down>", ":TmuxNavigateDown<CR>")
-key.set("n", "<C-Left>", ":TmuxNavigateLeft<CR>")
-key.set("n", "<C-Right>", ":TmuxNavigateRight<CR>")
+---------------------------------------------------------------------------
+-- Define a function to conditionally run a command based on the file type
+_G.save_or_fix = function()
+  local filetype = vim.bo.filetype
+  if filetype == "php" then
+    -- Run php-cs-fixer and save the file
+    vim.cmd("w | silent !php-cs-fixer fix % --using-cache=no")
+  else
+    -- Save the file for other file types
+    vim.cmd("w")
+  end
+end
 
+-- Set key mappings to call the function
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-s>",
+  ":lua _G.save_or_fix()<CR>",
+  { noremap = true, silent = true, desc = "Save or fix PHP file in normal mode" }
+)
+vim.api.nvim_set_keymap(
+  "i",
+  "<C-s>",
+  "<Esc>:lua _G.save_or_fix()<CR>a",
+  { noremap = true, silent = true, desc = "Save or fix PHP file in insert mode" }
+)
+
+-- keymap.set("n", "<C-s>", "<cmd> w <CR>", { desc = "Save file normal mode" }) -- save file
+-- keymap.set("i", "<C-s>", "<cmd> w <CR>", { desc = "Save file insert mode" }) -- save file
+--
+----------------------------------------------------------------------------
 -- Terminal buffer --
 vim.api.nvim_set_keymap("n", "<C-Return>", ":term<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-Return>", "<Esc>:term<CR>", { noremap = true, silent = true })
