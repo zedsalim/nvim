@@ -1,3 +1,6 @@
+-----------------------------------------------------------
+-- NVIM-SURROUND: Surround Text Objects Easily
+-----------------------------------------------------------
 return {
   "kylechui/nvim-surround",
   event = { "BufReadPre", "BufNewFile" },

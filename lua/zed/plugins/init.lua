@@ -1,5 +1,12 @@
+-----------------------------------------------------------
+-- COMMON PLUGINS: Utility and Navigation Enhancements
+-----------------------------------------------------------
 return {
-  "nvim-lua/plenary.nvim", -- lua functions that many plugins use
-  "christoomey/vim-tmux-navigator", -- tmux & split window navigation
+  -- lua functions that many plugins use
+  "nvim-lua/plenary.nvim",
+
+  -- tmux & split window navigation
+  "christoomey/vim-tmux-navigator",
+
   "norcalli/nvim-colorizer.lua",
 }

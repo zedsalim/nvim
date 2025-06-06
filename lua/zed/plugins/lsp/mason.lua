@@ -1,3 +1,7 @@
+-----------------------------------------------------------
+-- MASON: LSP SERVERS, FORMATTERS, AND TOOL INSTALLATION
+-----------------------------------------------------------
+
 return {
   "williamboman/mason.nvim",
   dependencies = {

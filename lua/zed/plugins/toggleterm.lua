@@ -1,3 +1,7 @@
+-----------------------------------------------------------
+-- TOGGLETERMINAL: FLOATING TERMINAL MANAGEMENT
+-----------------------------------------------------------
+
 return {
   "akinsho/toggleterm.nvim",
   version = "*",

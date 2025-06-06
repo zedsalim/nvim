@@ -1,5 +1,10 @@
+-----------------------------------------------------------
+-- LAZYGIT: Git integration with floating window support
+-----------------------------------------------------------
 return {
   "kdheepak/lazygit.nvim",
+
+  -- commands to trigger loading the plugin
   cmd = {
     "LazyGit",
     "LazyGitConfig",
@@ -7,12 +12,13 @@ return {
     "LazyGitFilter",
     "LazyGitFilterCurrentFile",
   },
-  -- optional for floating window border decoration
+
+  -- optional dependency for floating window border decoration
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  -- setting the keybinding for LazyGit with 'keys' is recommended in
-  -- order to load the plugin when the command is run for the first time
+
+  -- recommended keybinding to lazy-load plugin on demand
   keys = {
     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
   },

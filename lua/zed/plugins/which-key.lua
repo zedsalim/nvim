@@ -1,3 +1,7 @@
+-----------------------------------------------------------
+-- HELPERS: WHICH-KEY (KEYBINDING HINTS)
+-----------------------------------------------------------
+
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
@@ -6,8 +10,6 @@ return {
     vim.o.timeoutlen = 500
   end,
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
+    -- leave it empty to use the default settings
   },
 }

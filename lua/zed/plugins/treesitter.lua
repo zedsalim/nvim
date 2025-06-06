@@ -1,3 +1,7 @@
+-----------------------------------------------------------
+-- TREESITTER: SYNTAX HIGHLIGHTING, INDENTATION & AUTOTAGGING
+-----------------------------------------------------------
+
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },

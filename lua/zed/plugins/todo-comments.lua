@@ -1,3 +1,7 @@
+-----------------------------------------------------------
+-- TODO COMMENTS NAVIGATION AND HIGHLIGHTING
+-----------------------------------------------------------
+
 return {
   "folke/todo-comments.nvim",
   event = { "BufReadPre", "BufNewFile" },

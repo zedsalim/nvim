@@ -1,3 +1,6 @@
+-----------------------------------------------------------
+-- SUBSTITUTE.NVIM: Enhanced Substitution Motions and Commands
+-----------------------------------------------------------
 return {
   "gbprod/substitute.nvim",
   event = { "BufReadPre", "BufNewFile" },

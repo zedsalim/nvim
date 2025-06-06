@@ -1,10 +1,15 @@
+-----------------------------------------------------------
+-- LUALINE: Statusline Plugin with Custom Theme & Lazy Updates
+-----------------------------------------------------------
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+
   config = function()
     local lualine = require("lualine")
-    local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+    local lazy_status = require("lazy.status") -- to show lazy plugin update count
 
+    -- define colors used in custom theme
     local colors = {
       blue = "#65D1FF",
       green = "#3EFFDC",
@@ -16,6 +21,7 @@ return {
       inactive_bg = "#2c3043",
     }
 
+    -- custom theme definition for lualine
     local my_lualine_theme = {
       normal = {
         a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
@@ -43,13 +49,14 @@ return {
         c = { bg = colors.bg, fg = colors.fg },
       },
       inactive = {
+        -- Note: colors.semilightgray is not defined, possibly a typo or missing; you might want to define it or replace with a hex code
         a = { bg = colors.inactive_bg, fg = colors.semilightgray, gui = "bold" },
         b = { bg = colors.inactive_bg, fg = colors.semilightgray },
         c = { bg = colors.inactive_bg, fg = colors.semilightgray },
       },
     }
 
-    -- configure lualine with modified theme
+    -- setup lualine with the custom theme and sections
     lualine.setup({
       options = {
         theme = my_lualine_theme,
@@ -59,7 +66,7 @@ return {
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
-            color = { fg = "#ff9e64" },
+            color = { fg = "#ff9e64" }, -- color for lazy update count
           },
           { "encoding" },
           { "fileformat" },

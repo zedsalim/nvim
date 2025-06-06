@@ -1,55 +1,116 @@
+-----------------------------------------------------------
+-- BASIC SETTINGS
+-----------------------------------------------------------
+
+-- Use tree-style view for netrw
 vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
 
-opt.relativenumber = true
+-- Show absolute line number
 opt.number = true
 
--- tabs & indentation
-opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 2 -- 2 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+-- Show relative line numbers
+opt.relativenumber = true
 
-opt.wrap = true
-opt.linebreak = true -- companion to wrap, don't split words
-
--- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
-
+-- Highlight the current line
 opt.cursorline = true
 
--- turn on termguicolors for tokyonight colorscheme to work
--- (have to use iterm2 or any other true color terminal)
+-- More space in the command line
+opt.cmdheight = 2
+
+-- Keep lines above and below the cursor
+opt.scrolloff = 16
+
+-- File encoding
+opt.fileencoding = "utf-8"
+
+-- Highlight all matches on search
+opt.hlsearch = true
+
+-----------------------------------------------------------
+-- TABS & INDENTATION
+-----------------------------------------------------------
+
+-- Number of spaces a tab counts for
+opt.tabstop = 2
+
+-- Size of an indent
+opt.shiftwidth = 2
+
+-- Convert tabs to spaces
+opt.expandtab = true
+
+-- Copy indent from current line
+opt.autoindent = true
+
+-----------------------------------------------------------
+-- TEXT DISPLAY
+-----------------------------------------------------------
+
+-- Enable line wrap
+opt.wrap = true
+
+-- Wrap lines at word boundary
+opt.linebreak = true
+
+-- Always show the sign column
+opt.signcolumn = "yes"
+
+-- Show `` in markdown files
+opt.conceallevel = 0
+
+-- Treat dash-connected words as one word
+opt.iskeyword:append("-")
+
+-----------------------------------------------------------
+-- SEARCH
+-----------------------------------------------------------
+
+-- Ignore case in search patterns
+opt.ignorecase = true
+
+-- Use smart case if search includes uppercase
+opt.smartcase = true
+
+-----------------------------------------------------------
+-- COLORS
+-----------------------------------------------------------
+
+-- Enable true color support
 opt.termguicolors = true
-opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
--- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+-- Use dark background
+opt.background = "dark"
 
--- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+-----------------------------------------------------------
+-- BACKSPACE & CLIPBOARD
+-----------------------------------------------------------
 
--- split windows
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+-- Allow backspace over everything in insert mode
+opt.backspace = "indent,eol,start"
 
-opt.iskeyword:append("-") -- consider string-string as whole word
+-- Use system clipboard
+opt.clipboard:append("unnamedplus")
 
-opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+-----------------------------------------------------------
+-- WINDOW SPLITS
+-----------------------------------------------------------
 
-opt.conceallevel = 0 -- so that `` is visible in markdown files
-opt.fileencoding = "utf-8" -- the encoding written to a file
-opt.hlsearch = true -- highlight all matches on previous search pattern
+-- Vertical splits open to the right
+opt.splitright = true
 
-opt.scrolloff = 16 -- minimal number of screen lines to keep above and below the cursor
+-- Horizontal splits open below
+opt.splitbelow = true
 
--- turn off swapfile
+-----------------------------------------------------------
+-- SWAP / UNDO
+-----------------------------------------------------------
+
+-- Enable swapfile
 opt.swapfile = true
 
--- Set the directory for undo files
+-- Set undo directory
 opt.undodir = vim.fn.expand("/tmp/nvim_un")
 
 -- Enable persistent undo

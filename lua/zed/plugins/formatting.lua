@@ -1,3 +1,7 @@
+-----------------------------------------------------------
+-- CONFORM.NVIM: Formatter Setup for Multiple Filetypes
+-----------------------------------------------------------
+
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
