@@ -20,7 +20,6 @@ keymap.set("n", "<C-s>", ":w<CR>", opts)
 keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
 keymap.set("n", "<C-q>", ":q!<CR>", opts)
 keymap.set("i", "<C-q>", "<Esc>:q!<CR>", opts)
-keymap.set("n", "<C-w>", ":bd<CR>", opts)
 
 -- Delete character without copying
 keymap.set("n", "x", '"_x', { desc = "Delete character without copying" })
@@ -50,12 +49,12 @@ keymap.set("n", "<C-Right>", ":TmuxNavigateRight<CR>", opts)
 -----------------------------------------------------------
 
 -- New/close tabs
-keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close current tab" })
-keymap.set("n", "<leader>tf", ":tabnew %<CR>", { desc = "Open buffer in new tab" })
 keymap.set("n", "<C-t>", ":tabnew<CR>", opts)
+-- keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab" })
+-- keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close current tab" })
+-- keymap.set("n", "<leader>tf", ":tabnew %<CR>", { desc = "Open buffer in new tab" })
 
--- Buffer navigation (like VSCode)
+-- Buffer navigation
 keymap.set("n", "<Tab>", ":bnext<CR>")
 keymap.set("n", "<S-Tab>", ":bprevious<CR>")
 
@@ -64,14 +63,11 @@ keymap.set("n", "<S-Tab>", ":bprevious<CR>")
 -----------------------------------------------------------
 
 -- Toggle NvimTree
-keymap.set("n", "<leader>n", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+keymap.set("n", "<C-Space>", "<cmd>NvimTreeFindFileToggle<CR>", opts) -- toggle file explorer on current file
+-- keymap.set("n", "<C-Space>", "<cmd>NvimTreeToggle<CR>", opts) -- toggle file explorer
 
 -- Quick file search (Telescope)
 keymap.set("n", "<C-p>", ":Telescope find_files<CR>", opts)
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
@@ -87,9 +83,9 @@ keymap.set("n", "<leader>p", ":lua vim.lsp.buf.format()<CR>", opts)
 -- Code actions
 keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opts)
 
--- -- Diagnostics
--- keymap.set("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
--- keymap.set("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
+-- Diagnostics
+keymap.set("n", "[d", ":lua vim.diagnostic.goto_prev()<CR>", opts)
+keymap.set("n", "]d", ":lua vim.diagnostic.goto_next()<CR>", opts)
 
 -- Hover info
 keymap.set("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opts)
