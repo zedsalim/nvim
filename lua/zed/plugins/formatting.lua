@@ -26,6 +26,13 @@ return {
         python = { "isort", "black" },
         php = { "php-cs-fixer" },
       },
+
+      formatters = {
+        prettier = {
+          prepend_args = { "--single-quote" },
+        },
+      },
+
       format_on_save = {
         lsp_fallback = true,
         async = false,
