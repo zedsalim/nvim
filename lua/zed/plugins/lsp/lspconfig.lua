@@ -11,25 +11,13 @@ return {
     { "folke/neodev.nvim", opts = {} },
   },
   config = function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
-
-    -- import mason_lspconfig plugin
-    local mason_lspconfig = require("mason-lspconfig")
-
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-    local keymap = vim.keymap -- for conciseness
+    local keymap = vim.keymap
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
 
-        -- set keybinds
         opts.desc = "Show LSP references"
         keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
@@ -71,63 +59,73 @@ return {
       end,
     })
 
-    -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    -- Change the Diagnostic symbols in the sign column (gutter)
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    mason_lspconfig.setup_handlers({
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
-      ["svelte"] = function()
-        lspconfig["svelte"].setup({
-          capabilities = capabilities,
-          on_attach = function(client, bufnr)
-            vim.api.nvim_create_autocmd("BufWritePost", {
-              pattern = { "*.js", "*.ts" },
-              callback = function(ctx)
-                client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-              end,
-            })
+    -- Configure LSP servers
+    vim.lsp.config("svelte", {
+      capabilities = capabilities,
+      cmd = { "svelteserver", "--stdio" },
+      filetypes = { "svelte" },
+      root_markers = { "package.json", ".git" },
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePost", {
+          pattern = { "*.js", "*.ts" },
+          callback = function(ctx)
+            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
           end,
         })
       end,
-      ["graphql"] = function()
-        lspconfig["graphql"].setup({
-          capabilities = capabilities,
-          filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-        })
-      end,
-      ["emmet_ls"] = function()
-        lspconfig["emmet_ls"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-        })
-      end,
-      ["lua_ls"] = function()
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              diagnostics = {
-                globals = { "vim" },
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          },
-        })
-      end,
     })
+
+    vim.lsp.config("graphql", {
+      capabilities = capabilities,
+      cmd = { "graphql-lsp", "server", "-m", "stream" },
+      filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+      root_markers = { ".graphqlrc", ".graphql.config.js", "graphql.config.js" },
+    })
+
+    vim.lsp.config("emmet_ls", {
+      capabilities = capabilities,
+      cmd = { "emmet-ls", "--stdio" },
+      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+      root_markers = { "package.json", ".git" },
+    })
+
+    vim.lsp.config("lua_ls", {
+      capabilities = capabilities,
+      cmd = { "lua-language-server" },
+      filetypes = { "lua" },
+      root_markers = { ".luarc.json", ".git" },
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+          completion = {
+            callSnippet = "Replace",
+          },
+        },
+      },
+    })
+
+    vim.lsp.config("pyright", {
+      capabilities = capabilities,
+      cmd = { "pyright-langserver", "--stdio" },
+      filetypes = { "python" },
+      root_markers = { "pyproject.toml", "setup.py", "requirements.txt", ".git" },
+    })
+
+    -- Enable LSP servers
+    vim.lsp.enable("svelte")
+    vim.lsp.enable("graphql")
+    vim.lsp.enable("emmet_ls")
+    vim.lsp.enable("lua_ls")
+    vim.lsp.enable("pyright")
   end,
 }
